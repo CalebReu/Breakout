@@ -1,4 +1,5 @@
-Kaedyn = ParticleFX
-Caleb = Eyes (charcter design)
-Ariana = sounds
-Jackson = UI
+Kaedyn = ParticleFX <br>
+Caleb = Eyes (charcter design)<br>
+Ariana = sounds<br>
+Jackson = UI<br>
+
