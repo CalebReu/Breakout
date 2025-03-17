@@ -9,6 +9,11 @@ public class Brick : MonoBehaviour
     {
         if (destroyRoutine != null) return;
         if (!other.gameObject.CompareTag("Ball")) return;
+        // add sfx here instead of in GameManager so there's no delay (want instant feedback)
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.blockBreakClip);
+        }
         destroyRoutine = StartCoroutine(DestroyWithDelay());
     }
 
