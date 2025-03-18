@@ -3,7 +3,7 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 public class ScoreUI : MonoBehaviour
-{
+{   
     [SerializeField] private TextMeshProUGUI current;
     [SerializeField] private TextMeshProUGUI toUpdate;
     [SerializeField] private Transform coinTextContainer;
@@ -16,8 +16,7 @@ public class ScoreUI : MonoBehaviour
     private void Start()
     {
         Canvas.ForceUpdateCanvases(); // for making sure the data we get is accurate (as the animation software "doTween" is asyncronous and might report the wrong postion)
-        current.SetText("0");
-        toUpdate.SetText("0");
+  
         containerInitPosition = coinTextContainer.localPosition.y;
         moveAmount = current.rectTransform.rect.height;
     }

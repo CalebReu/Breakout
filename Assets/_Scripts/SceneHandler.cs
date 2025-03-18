@@ -35,6 +35,7 @@ public class SceneHandler : SingletonMonoBehavior<SceneHandler>
         if(nextLevelIndex >= levels.Count)
         {
             LoadMenuScene();
+            
         }
         else
         {
