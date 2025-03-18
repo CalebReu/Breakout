@@ -12,10 +12,12 @@ public class GameManager : SingletonMonoBehavior<GameManager>
 
     private void OnEnable()
     {
-        InputHandler.Instance.OnFire.AddListener(FireBall);
+       
+        InputHandler.Instance.OnFire.RemoveListener(FireBall);
         ball.ResetBall();
         totalBrickCount = bricksContainer.childCount;
         currentBrickCount = bricksContainer.childCount;
+        InputHandler.Instance.OnFire.AddListener(FireBall);
     }
 
     private void OnDisable()
