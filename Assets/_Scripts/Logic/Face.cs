@@ -28,7 +28,7 @@ public class Face : MonoBehaviour
         leftPupil.localPosition = directionToBall * maxPupilMovement + new Vector3(0, 0, -0.05f);
         directionToBall = ball.position - rightEye.position;
         directionToBall = Vector3.ProjectOnPlane(Quaternion.Euler(-90, 0, 0) * directionToBall, Vector3.forward).normalized;
-        Debug.Log("Direction to ball: " + directionToBall);
+        // Debug.Log("Direction to ball: " + directionToBall);
         rightPupil.localPosition = directionToBall * maxPupilMovement + new Vector3(0, 0, -0.05f);
 
         // Move the mouth to frown when the ball is far away
