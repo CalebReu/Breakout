@@ -5,16 +5,19 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     [SerializeField] private int maxLives = 3;
     [SerializeField] private Ball ball;
     [SerializeField] private Transform bricksContainer;
-
+    [SerializeField] private ScoreUI ScoreUI;
+    [SerializeField] private int score = 0;
     private int currentBrickCount;
     private int totalBrickCount;
 
     private void OnEnable()
     {
-        InputHandler.Instance.OnFire.AddListener(FireBall);
+       
+        InputHandler.Instance.OnFire.RemoveListener(FireBall);
         ball.ResetBall();
         totalBrickCount = bricksContainer.childCount;
         currentBrickCount = bricksContainer.childCount;
+        InputHandler.Instance.OnFire.AddListener(FireBall);
     }
 
     private void OnDisable()
@@ -35,6 +38,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         // implement particle effect here
         // add camera shake here
         currentBrickCount--;
+        increaseScore();
         Debug.Log($"Destroyed Brick at {position}, {currentBrickCount}/{totalBrickCount} remaining");
 
         if (currentBrickCount == 0) // end of level
@@ -43,13 +47,25 @@ public class GameManager : SingletonMonoBehavior<GameManager>
             playLevelCompleteSFX();
         }
     }
+    public void increaseScore() {
+        score++;
+        ScoreUI.UpdateScore(score);
+    }
 
     public void KillBall()
     {
         maxLives--;
-        // update lives on HUD here
-        // game over UI if maxLives < 0, then exit to main menu after delay
-        ball.ResetBall();
+        if (maxLives <= 0)
+        {   // game over UI if maxLives < 0, then exit to main menu after delay
+            SceneHandler.Instance.LoadMenuScene();
+        }
+        else {
+            // update lives on HUD here
+            ball.ResetBall();
+        }
+        
+     
+      
     }
 
     private void playLevelCompleteSFX()
