@@ -798,6 +798,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2758880793968087547, guid: 1493bc6e5a6ac6f4780a722c60dbef87, type: 3}
+      propertyPath: m_text
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4117775013939921360, guid: 1493bc6e5a6ac6f4780a722c60dbef87, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2373,7 +2377,7 @@ MonoBehaviour:
   ball: {fileID: 4561635119993004754}
   bricksContainer: {fileID: 796630123}
   ScoreUI: {fileID: 659908475}
-  score: 0
+  score: 9
 --- !u!1001 &1646988241
 PrefabInstance:
   m_ObjectHideFlags: 0
