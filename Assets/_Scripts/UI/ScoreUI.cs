@@ -2,11 +2,13 @@ using System.Collections;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 public class ScoreUI : MonoBehaviour
 {   
     [SerializeField] private TextMeshProUGUI current;
     [SerializeField] private TextMeshProUGUI toUpdate;
     [SerializeField] private Transform coinTextContainer;
+    [SerializeField] private  Image[] lives;
     [SerializeField] private float duration;
     [SerializeField] private Ease animationCurve;
 
@@ -25,6 +27,9 @@ public class ScoreUI : MonoBehaviour
         toUpdate.SetText($"{score}");
         coinTextContainer.DOLocalMoveY(containerInitPosition + moveAmount, duration).SetEase(animationCurve);
         StartCoroutine(ResetScoreContainer(score));
+    }
+    public void LoseLife(int i) {
+        lives[i].enabled = false;
     }
     private IEnumerator ResetScoreContainer(int score)
     {

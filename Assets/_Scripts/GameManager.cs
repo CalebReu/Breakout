@@ -54,20 +54,19 @@ public class GameManager : SingletonMonoBehavior<GameManager>
 
     public void KillBall()
     {
-        maxLives--;
+        loseLife();
         if (maxLives <= 0)
         {   // game over UI if maxLives < 0, then exit to main menu after delay
             SceneHandler.Instance.LoadMenuScene();
         }
         else {
-            // update lives on HUD here
             ball.ResetBall();
-        }
-        
-     
-      
+        } 
     }
-
+    private void loseLife() {
+        maxLives--;
+        ScoreUI.LoseLife(maxLives);
+    }
     private void playLevelCompleteSFX()
     {
         if (AudioManager.Instance != null)
