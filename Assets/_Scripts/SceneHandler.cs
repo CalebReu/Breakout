@@ -23,6 +23,8 @@ public class SceneHandler : SingletonMonoBehavior<SceneHandler>
         initXPosition = transitionCanvas.transform.localPosition.x;
         SceneManager.LoadScene(menuScene);
         SceneManager.sceneLoaded += OnSceneLoad;
+        PlayerPrefs.SetInt("lives", 3);
+        Debug.Log("scenehandler lives set to 3");
     }
 
     private void OnSceneLoad(Scene scene, LoadSceneMode _)
@@ -56,4 +58,5 @@ public class SceneHandler : SingletonMonoBehavior<SceneHandler>
         yield return new WaitForSeconds(animationDuration);
         SceneManager.LoadScene(scene);
     }
+  
 }
