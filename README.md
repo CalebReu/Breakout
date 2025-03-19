@@ -13,7 +13,10 @@ We are Team Galagang (AKA Group 26 on Canvas). Here is who did what:
 
 ## Demo video
 
-TODO: add video once all features are implemented
+
+https://github.com/user-attachments/assets/e07765da-71c3-45a2-97b3-6ba84b5537c7
+
+
 
 ## Credits
 
