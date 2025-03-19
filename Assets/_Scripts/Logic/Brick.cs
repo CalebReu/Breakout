@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class Brick : MonoBehaviour
 {
+    [SerializeField] private GameObject particleSpawner;
     private Coroutine destroyRoutine = null;
 
     private void OnCollisionEnter(Collision other)
@@ -20,6 +22,7 @@ public class Brick : MonoBehaviour
     private IEnumerator DestroyWithDelay()
     {
         yield return new WaitForSeconds(0.1f); // two physics frames to ensure proper collision
+        Instantiate(particleSpawner, transform.position, transform.rotation);
         GameManager.Instance.OnBrickDestroyed(transform.position);
         Destroy(gameObject);
     }
