@@ -18,13 +18,21 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         totalBrickCount = bricksContainer.childCount;
         currentBrickCount = bricksContainer.childCount;
         InputHandler.Instance.OnFire.AddListener(FireBall);
+        setLives(3-PlayerPrefs.GetInt("lives"));
+        Debug.Log("gamemanager awake: lives set to " + PlayerPrefs.GetInt("lives"));
     }
 
     private void OnDisable()
     {
         InputHandler.Instance.OnFire.RemoveListener(FireBall);
     }
-
+    public void setLives(int lives) {
+        for(int i = 0; i < lives; i++){
+            loseLife();
+        }
+       
+       
+    }
     private void FireBall()
     {
         ball.FireBall();
@@ -66,6 +74,9 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     private void loseLife() {
         maxLives--;
         ScoreUI.LoseLife(maxLives);
+        Debug.Log("lives lowered to " + maxLives);
+        PlayerPrefs.SetInt("lives", maxLives);
+
     }
     private void playLevelCompleteSFX()
     {
